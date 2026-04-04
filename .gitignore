@@ -1,0 +1,19 @@
+# .gitignore
+
+# Python ignores
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Node.js ignores
+node_modules/
+*.log
+npm-debug.log*
+yarn-error.log
+
+# IDE specific ignores
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
