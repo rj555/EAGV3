@@ -1,67 +1,66 @@
 # 🎨 ArcSketch
 
 <p align="center">
-  <i>A powerful, lightweight Chrome Extension to draw and annotate directly on any browser tab for system design and architecture.</i>
+  <img src="icons/icon128.png" width="80" height="80" alt="ArcSketch Logo" />
+  <br />
+  <i>A professional-grade system design annotation tool for your browser.</i>
 </p>
 
 ---
 
 ## ⚡ Overview
 
-**ArcSketch** transforms any web page into your personal whiteboard. Designed specifically for system design interviews, architectural diagrams, and rapid prototyping, ArcSketch allows you to inject standardized system components (Databases, Load Balancers, API Gateways) and freehand sketches right over web content. 
+**ArcSketch** transforms any web page into a high-fidelity whiteboard. Specifically built for system design interviews and architectural planning, it allows you to overlay standardized components (Databases, Load Balancers, API Gateways) and freehand sketches directly over live web content.
 
-Whether you're presenting, planning, or just brainstorming—ArcSketch gets out of your way and lets your ideas flow.
+With its new **interactive text engine**, ArcSketch gives you precise control over your labels, allowing you to move, edit, and rotate text with professional precision.
 
 ## ✨ Key Features
 
-- **🖌️ Freehand Drawing**: Smooth, low-latency pen tool to sketch freely over any webpage. Quick keyboard toggles (`S` to start, `E` to end drawing).
-- **🏗️ Architecture Shapes**: Built-in, perfectly rendered shapes for core system components:
-  - Databases
-  - Load Balancers
-  - API Gateways
-  - Standard geometric primitives (Boxes, Circles, Lines)
-- **📝 Text Annotations**: Instantly drop typed text precisely centered inside shapes or anywhere else on the screen.
-- **🖼️ One-Click Screenshots**: Capture your active viewport alongside all your annotations directly to a timestamped PNG file.
-- **🔄 Robust History**: Full Undo/Redo capability so mistakes are never permanent.
-- **🛡️ Unsaved Work Protection**: Warns you (and offers a save prompt) if you attempt to close the tool or leave the page with uncaptured drawings.
-- **🖱️ Draggable Floating Toolbar**: Move the tool palette anywhere on the screen so it's never obstructing your work.
+- **✍️ Interactive Text System**: 
+  - **Edit Post-Placement**: Click any text block to refine your labels.
+  - **🔄 Professional Rotation**: Drag the integrated rotation handle (`↻`) to spin text. Features **Cardinal Snapping** at 0°, 90°, 180°, and 270°.
+  - **🖱️ Drag-to-Move**: Click and drag any text element to reposition it perfectly.
+- **🖌️ Freehand Sketching**: Ultra-smooth canvas drawing with low latency.
+- **🏗️ Architectural library**: 
+  - One-click insertion of **Load Balancers**, **API Gateways**, and **Databases**.
+  - Specialized shapes for **Clouds**, **Decision Diamonds**, and **Arrows**.
+- **🎨 Live Formatting**: 
+  - Dynamic font scaling and stroke thickness via the floating menu.
+  - Support for Bold and Italic stylings with system-native font stacks.
+- **📥 Iterative Save**: Capture snapshots of your work to timestamped PNGs. The tool stays open so you can capture different states of your diagram.
+- **🔄 Unlimited Undo/Redo**: Every stroke and text adjustment is tracked in a unified history stack.
+- **🗑️ Clear All**: Wipe the entire canvas in one click (fully undoable).
+- **🛡️ Unsaved Work Protection**: A smart modal prevents accidental loss of your annotations.
 
 ---
 
 ## 🚀 Installation 
 
-Since ArcSketch is currently in local development, you can load it directly into Chrome using Developer Mode:
-
-1. Clone or download this repository to your local machine.
-2. Open Google Chrome and navigate to `chrome://extensions/`.
-3. Enable the **Developer Mode** toggle in the top-right corner.
-4. Click the **Load unpacked** button in the top-left corner.
-5. Select the folder containing this repository (the folder with `manifest.json`).
-6. ArcSketch will appear in your extensions list, ready to use!
+1. Clone or download this repository.
+2. Open Chrome and go to `chrome://extensions/`.
+3. Enable **Developer Mode**.
+4. Click **Load unpacked** and select the repository folder.
+5. Pin **ArcSketch** to your extension bar for quick access.
 
 ## 🕹️ How to Use
 
-1. **Activate**: Click the ArcSketch icon in your Chrome extensions toolbar to activate it on your current tab.
-2. **Move**: Click and drag the extension's icon on the left of the floating menu to reposition the toolbar.
-3. **Draw**: Select a tool from the menu (Pen, Text, Shapes) and interact directly with the page.
-    - **Keyboard Shortcuts**: Quickly tap `S` to start drawing with the pen tool, and `E` to stop drawing.
-4. **Export**: Click the green **Save** (`📥`) button to immediately take a screenshot of your masterpiece and close the tool.
+1. **Activate**: Click the ArcSketch icon in your browser to start.
+2. **Move Toolbar**: Drag the **ArcSketch** wordmark to reposition the controls anywhere.
+3. **Annotate**:
+    - **Pen**: Sketch with freehand strokes (Toggle with `S` to start, `E` to end).
+    - **Text**: Click to place, click again to edit, or drag the handle to rotate.
+    - **Shapes**: Select a shape from the dropdown to draw boxes, clouds, or components.
+4. **Export**: Click the green **Save** (`📥`) button to download a screenshot.
+5. **Wipe**: Click the red **Clear** (`🗑️`) button to start over.
 
 ---
 
 ## 🛠️ Technology Stack
 
-- purely Vanilla JavaScript (ES6+)
-- HTML5 Canvas API
-- Standard CSS / Flexbox / Keyframe Animations
-- Chrome Extensions API V3 Framework
-
-## 🔒 Permissions Breakdown
-
-- `activeTab`: Used to access the current window to inject the drawing canvas and take screenshots.
-- `scripting`: Required to inject `content.js` and `content.css` seamlessly.
-- `downloads`: Allows the extension to seamlessly save your screenshots directly to your file system.
-- `storage`: Preserves the active state of the tool per-tab so your tool reappears safely if a page undergoes partial navigation mapping.
+- **Vanilla JS (ES6+)**: Zero-dependency frontend logic.
+- **DOM Overlay Engine**: Custom interactive layering for text and UI.
+- **HTML5 Canvas**: High-performance raster drawing.
+- **Chrome manifest V3**: Secure and modern extension architecture.
 
 ---
-*Built with ❤️ for architects and engineers.*
+*Built for architects, by engineers who love diagramming.*
