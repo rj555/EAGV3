@@ -352,6 +352,7 @@ function startDrawing(e) {
   if (e.target !== canvas || currentTool === 'pan') return;
   
   if (currentTool === 'text') {
+    if (e.cancelable) e.preventDefault(); // Stop canvas from stealing focus
     openTextInput(e.pageX || e.clientX, e.pageY || e.clientY);
     return;
   }
@@ -480,7 +481,9 @@ function openTextInput(x, y) {
   textInput.style.left = x + 'px';
   textInput.style.top = y + 'px';
   
-  textInput.focus();
+  setTimeout(() => {
+    textInput.focus();
+  }, 10);
 }
 
 function finalizeText() {
