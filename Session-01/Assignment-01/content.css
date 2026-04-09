@@ -1,0 +1,295 @@
+/* content.css */
+
+/* The Drawing Canvas */
+#marking-tool-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* width and height are set strictly in pixels by JS to prevent coordinate squishing */
+  z-index: 9999998; /* Just below the toolbar */
+  pointer-events: none; /* Default to none, enabled when drawing */
+  display: none; /* Default hidden */
+  background: transparent;
+  cursor: crosshair;
+}
+
+#marking-tool-canvas.active {
+  display: block;
+}
+
+#marking-tool-canvas.interactive {
+  pointer-events: all;
+}
+
+/* The Floating Toolbar */
+#marking-tool-toolbar {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 50px;
+  background: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  z-index: 9999999;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+#marking-tool-toolbar.active {
+  display: flex;
+  animation: slideDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideDown {
+  from { transform: translate(-50%, -30px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.mt-drag-handle {
+  display: flex;
+  align-items: center;
+  cursor: grab;
+  padding: 0 4px;
+}
+
+.mt-drag-handle:active {
+  cursor: grabbing;
+}
+
+.mt-app-icon {
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+/* Toolbar Buttons */
+.mt-btn {
+  background: transparent;
+  border: none;
+  color: #a0a0a0;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.mt-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+}
+
+.mt-btn:active {
+  transform: scale(0.9);
+}
+
+.mt-btn.active-tool {
+  color: #fff;
+  background: rgba(99, 102, 241, 0.9); /* Indigo */
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+}
+
+/* Dropdown specific */
+.mt-dropdown-container {
+  position: relative;
+}
+
+.mt-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  background: rgba(30, 30, 30, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.mt-dropdown-container:hover .mt-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mt-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #a0a0a0;
+  background: transparent;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.mt-dropdown-item:hover, .mt-dropdown-item.active-tool {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+.mt-dropdown-item.active-tool {
+  background: rgba(99, 102, 241, 0.4);
+}
+
+.mt-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 4px;
+}
+
+.mt-btn-danger {
+  color: #ff5252;
+}
+.mt-btn-danger:hover {
+  background: rgba(255, 82, 82, 0.2);
+  color: #ff8a80;
+}
+
+.mt-btn-success {
+  color: #4CAF50;
+}
+.mt-btn-success:hover {
+  background: rgba(76, 175, 80, 0.2);
+  color: #81C784;
+}
+
+/* Color Picker */
+.mt-color-picker {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  outline: none;
+  margin: 0 2px;
+}
+.mt-color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+.mt-color-picker::-webkit-color-swatch {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+}
+
+/* Text Input Overlay */
+#marking-tool-text-input {
+  position: absolute;
+  z-index: 99999999;
+  background: rgba(255, 255, 255, 0.9);
+  color: #413e3f;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Inter', Arial, sans-serif;
+  border: 2px dashed rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  outline: none;
+  display: none;
+  padding: 4px 8px;
+  pointer-events: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform-origin: top left;
+}
+
+/* Custom UI Modal */
+#marking-tool-modal {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  font-family: 'Inter', sans-serif;
+}
+
+.mt-modal-content {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 24px;
+  width: 320px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.mt-modal-content h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.mt-modal-content p {
+  color: #a0a0a0;
+  font-size: 14px;
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+.mt-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.mt-modal-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: opacity 0.2s;
+}
+
+.mt-modal-btn:hover {
+  opacity: 0.8;
+}
+
+.mt-modal-btn-primary {
+  background: #4CAF50;
+  color: white;
+}
+
+.mt-modal-btn-danger {
+  background: transparent;
+  color: #ff5252;
+  border: 1px solid rgba(255,82,82,0.3);
+}
+
+.mt-modal-btn-cancel {
+  background: transparent;
+  color: #a0a0a0;
+}
