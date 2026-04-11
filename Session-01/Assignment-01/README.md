@@ -15,7 +15,7 @@
 With its new **interactive text engine**, ArcSketch gives you precise control over your labels, allowing you to move, edit, and rotate text with professional precision.
 
 ### 📺 Watch the Demo
-[**Click here to watch ArcSketch in action!**](https://youtu.be/uqYmQtMhgFk)
+<a href="https://youtu.be/uqYmQtMhgFk" target="_blank" rel="noopener noreferrer"><b>Watch ArcSketch in action!</b></a>
 
 ## ✨ Key Features
 
