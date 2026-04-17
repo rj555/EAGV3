@@ -1,0 +1,444 @@
+/* Tooltip Button Styling */
+#gemini-stock-tooltip {
+  position: absolute;
+  z-index: 10000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 119, 255, 0.2);
+  color: #0056b3;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 119, 255, 0.15);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#gemini-stock-tooltip:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 119, 255, 0.25);
+}
+
+#gemini-stock-tooltip::before {
+  display: none;
+}
+.gemini-tooltip-logo {
+  width: 32px;
+  height: 32px;
+}
+
+/* Full Screen Loading Overlay */
+#gemini-stock-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(240, 248, 255, 0.85); /* AliceBlue with opacity */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2147483647; /* Max z-index */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.gemini-loading-box {
+  background: #ffffff;
+  padding: 40px 60px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 119, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  border: 1px solid rgba(0, 119, 255, 0.1);
+}
+
+.gemini-loading-brand {
+  font-size: 24px;
+  font-weight: 700;
+  color: transparent;
+  margin: 0;
+  background: -webkit-linear-gradient(45deg, #0056b3, #0077ff);
+  background: linear-gradient(45deg, #0056b3, #0077ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gemini-loading-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0056b3;
+  margin: 0;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+@keyframes gemini-pulse-icon {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+@keyframes gemini-pulse-text {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Modal Overlay styling */
+#gemini-stock-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(230, 240, 250, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#gemini-stock-overlay.visible {
+  opacity: 1;
+}
+
+/* Modal Container styling */
+#gemini-stock-modal {
+  background: #ffffff;
+  border: 1px solid rgba(0, 119, 255, 0.15);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 119, 255, 0.15);
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: #333333;
+  overflow: hidden;
+}
+
+#gemini-stock-overlay.visible #gemini-stock-modal {
+  transform: scale(1);
+}
+
+/* Modal Header */
+#gemini-stock-header {
+  padding: 6px 16px;
+  border-bottom: 1px solid rgba(0, 119, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(240, 248, 255, 0.5);
+}
+
+#gemini-stock-header h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: transparent;
+  background: -webkit-linear-gradient(45deg, #0056b3, #00a2ff);
+  background: linear-gradient(45deg, #0056b3, #00a2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gemini-modal-close {
+  background: rgba(0, 119, 255, 0.05);
+  border: none;
+  color: #0056b3;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  font-size: 18px;
+}
+
+.gemini-modal-close:hover {
+  background: rgba(0, 119, 255, 0.15);
+}
+
+/* Modal Content Area */
+#gemini-stock-content {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Data Grid / Results styling */
+.gemini-data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.gemini-data-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 119, 255, 0.1);
+  padding: 16px;
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.gemini-data-card:hover {
+  box-shadow: 0 8px 15px rgba(0, 119, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.gemini-data-label {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.gemini-data-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.gemini-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 24px 0 16px 0;
+  color: #0056b3;
+  border-bottom: 1px solid rgba(0, 119, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.gemini-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gemini-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 14px;
+  color: #444444;
+}
+
+.gemini-list li:last-child {
+  border-bottom: none;
+}
+
+.gemini-verdict {
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 24px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 18px;
+}
+.gemini-verdict.buy {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+.gemini-verdict.sell {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+.gemini-verdict.hold {
+  background: #fff8e1;
+  color: #f57f17;
+  border: 1px solid #ffe082;
+}
+
+/* Modal Footer */
+#gemini-stock-footer {
+  padding: 6px 16px;
+  border-top: 1px solid rgba(0, 119, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(240, 248, 255, 0.5);
+}
+
+.gemini-footer-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gemini-footer-row-bottom {
+  padding-bottom: 2px;
+}
+
+.gemini-download-btn {
+  background: linear-gradient(135deg, #0077ff, #0056b3);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 119, 255, 0.2);
+}
+
+.gemini-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 119, 255, 0.3);
+}
+
+.gemini-download-btn:disabled {
+  background: #cccccc;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+  color: #888888;
+}
+
+.gemini-download-btn::before {
+  content: '📊';
+}
+
+/* Color Classes */
+.color-green { color: #2e7d32 !important; }
+.color-amber { color: #f57f17 !important; }
+.color-red { color: #c62828 !important; }
+
+/* Chart Container */
+.gemini-chart-container {
+  background: #f8fbff;
+  border: 1px solid rgba(0, 119, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.gemini-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.gemini-chart-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+}
+
+.gemini-time-ranges {
+  display: flex;
+  gap: 8px;
+}
+
+.gemini-time-btn {
+  background: #ffffff;
+  border: 1px solid rgba(0, 119, 255, 0.2);
+  color: #0056b3;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.gemini-time-btn:hover {
+  background: rgba(0, 119, 255, 0.05);
+}
+
+.gemini-time-btn.active {
+  background: #0077ff;
+  border-color: #0077ff;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 119, 255, 0.3);
+}
+
+.gemini-canvas-wrapper {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+/* Logo specific styles */
+.gemini-loading-logo {
+  width: 96px;
+  height: 96px;
+  margin: 10px 0;
+  animation: gemini-pulse-icon 1.5s ease-in-out infinite;
+}
+
+.gemini-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gemini-header-logo {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0, 119, 255, 0.2));
+}
+
+.gemini-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gemini-footer-logo {
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+}
+
+.gemini-footer-brand {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0056b3;
+  opacity: 0.9;
+}
+
+.gemini-copyright {
+  font-size: 10px;
+  color: #999999;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.gemini-loading-box .gemini-copyright {
+  position: absolute;
+  bottom: 15px;
+}

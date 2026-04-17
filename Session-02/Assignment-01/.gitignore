@@ -1,0 +1,22 @@
+# Environment Variables
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Intermediate icon build files (not needed for extension)
+icon.png
+icon_transparent.png
+true_icon.png
+
+# Icon build utility scripts
+crop_icon.py
+make_transparent.py
+
